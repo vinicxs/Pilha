@@ -1,0 +1,41 @@
+class Static {
+    private Integer[] pilha;
+    private int cima;
+
+    public Static(int tamanho) {
+        this.pilha = new Integer[tamanho];
+        this.cima = 0;
+    }
+
+    public boolean Vazia() {
+        return cima == 0;
+    }
+
+    public boolean Cheia() {
+        return cima == pilha.length;
+    }
+
+    public void empilhar(int elemento) {
+        if (Cheia()) {
+            throw new StackOverflowError("Pilha cheia");
+        } else {
+            pilha[cima++] = elemento;
+        }
+    }
+
+    public Integer desempilhar() {
+        if (Vazia()) {
+            throw new IllegalStateException("Pilha vazia");
+        } else {
+            return pilha[--cima];
+        }
+    }
+
+    public Integer cima() {
+        if (Vazia()) {
+            throw new IllegalStateException("Pilha vazia");
+        } else {
+            return pilha[cima - 1];
+        }
+    }
+}
